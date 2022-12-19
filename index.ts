@@ -8,13 +8,17 @@ const app: Express = express();
 // app.use(cors()); // Enabling Cors for the Whole App
 const port = process.env.PORT;
 
-app.get("/", cors(), (req: Request, res: Response) => {
-  // enabling cors for a single route
+app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("Hello World Swapnil Srivastava");
+});
+
+// enabling cors for a single route
+app.get("/healthcheck", cors(), (req: Request, res: Response) => {
+  res.send("Hello Health Check");
 });
 
 app.listen(port, () => {
